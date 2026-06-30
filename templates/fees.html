@@ -1,34 +1,20 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Fee Status</title>
+<title>Fees</title>
 </head>
 <body>
 
-<h1>Fee Status</h1>
+<h1>Fees Information</h1>
 
-<table border="1">
-<tr>
-    <th>Total Fee</th>
-    <th>Paid</th>
-    <th>Remaining</th>
-</tr>
+<p><b>Amount:</b> ₹{{ fee[0] }}</p>
 
-<tr>
-    <td>₹50,000</td>
-    <td>₹40,000</td>
-    <td>₹10,000</td>
-</tr>
-
-</table>
+<p><b>Status:</b> {{ fee[1] }}</p>
 
 <br>
 
-<h3>Status: Partially Paid</h3>
-
-<br>
-
-<a href="/dashboard">Dashboard</a>
+<a href="/dashboard">Back</a>
 
 </body>
 </html>

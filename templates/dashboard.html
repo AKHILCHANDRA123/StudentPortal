@@ -1,38 +1,55 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Student Dashboard</title>
 </head>
 <body>
 
-<h1>Welcome {{ student[3] }}</h1>
+<h1>🎓 Student Dashboard</h1>
+
+<h2>Welcome {{ student[3] }}</h2>
+
+<hr>
 
 <h2>Student Details</h2>
 
 <p><b>Admission Number:</b> {{ student[1] }}</p>
+<p><b>Name:</b> {{ student[3] }}</p>
 <p><b>Email:</b> {{ student[4] }}</p>
 <p><b>Phone:</b> {{ student[5] }}</p>
 <p><b>Department:</b> {{ student[6] }}</p>
 <p><b>Year:</b> {{ student[7] }}</p>
 <p><b>Semester:</b> {{ student[8] }}</p>
 
-<a href="/profile">Profile</a>
-<br><br>
-<a href="/attendance">Attendance</a>
-<br><br>
-<a href="/timetable">Timetable</a>
-<br><br>
+<hr>
 
-<a href="/marks">Marks</a>
-<br><br>
+<h2>Academic Services</h2>
 
-<a href="/results">Results</a>
-<br><br>
-<a href="/fees">Fees</a>
-<br><br>
-<a href="/feedback">Feedback</a>
-<br><br>
+<p><a href="/attendance">📅 Attendance</a></p>
 
-<a href="/logout">Logout</a>
+<p><a href="/timetable">🕒 Timetable</a></p>
+
+<p><a href="/marks">📝 Marks</a></p>
+
+<p><a href="/results">🏆 Results</a></p>
+
+<p><a href="/fees">💰 Fees</a></p>
+
+<p><a href="/feedback">⭐ Feedback</a></p>
+
+<hr>
+
+
+<h2>Portal Status</h2>
+
+<p>✅ Login Status: Active</p>
+<p>✅ Cloud Deployment: Online</p>
+<p>✅ Student Portal: Running</p>
+
+<hr>
+
+<p><a href="/logout">🚪 Logout</a></p>
+
 </body>
 </html>

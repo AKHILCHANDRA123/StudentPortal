@@ -1,43 +1,32 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Marks</title>
+<title>Marks</title>
 </head>
 <body>
 
-<h1>Student Marks</h1>
+<h1>Marks</h1>
 
 <table border="1">
 <tr>
-    <th>Subject</th>
-    <th>Marks</th>
+<th>Subject</th>
+<th>Marks</th>
 </tr>
 
-<tr>
-    <td>Python</td>
-    <td>85</td>
-</tr>
+{% for row in marks %}
 
 <tr>
-    <td>DBMS</td>
-    <td>90</td>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
 </tr>
-
-<tr>
-    <td>Cloud Computing</td>
-    <td>88</td>
-</tr>
-
-<tr>
-    <td>Data Structures</td>
-    <td>92</td>
-</tr>
+{% endfor %}
 
 </table>
 
 <br>
 
-<a href="/dashboard">Dashboard</a>
+<a href="/dashboard">Back</a>
 
 </body>
 </html>
