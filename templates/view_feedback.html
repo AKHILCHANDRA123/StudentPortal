@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Feedback</title>
+</head>
+<body>
+
+<h1>All Student Feedback</h1>
+
+<table border="1">
+
+<tr>
+    <th>Admission No</th>
+    <th>Faculty</th>
+    <th>Subject</th>
+    <th>Rating</th>
+    <th>Comments</th>
+</tr>
+
+{% for row in feedbacks %}
+<tr>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>{{ row[5] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/admin_dashboard">Back to Dashboard</a>
+
+</body>
+</html>
