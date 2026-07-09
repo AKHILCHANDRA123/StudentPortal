@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Attendance</title>
+</head>
+<body>
+
+<h1>Attendance Details</h1>
+
+<table border="1">
+<tr>
+<th>Subject</th>
+<th>Attendance %</th>
+</tr>
+
+{% for row in attendance %}
+
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}%</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
