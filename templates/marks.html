@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Marks</title>
+</head>
+<body>
+
+<h1>Marks</h1>
+
+<table border="1">
+<tr>
+<th>Subject</th>
+<th>Marks</th>
+</tr>
+
+{% for row in marks %}
+
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">Back</a>
+
+</body>
+</html>
