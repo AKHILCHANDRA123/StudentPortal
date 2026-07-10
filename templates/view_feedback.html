@@ -1,37 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View Feedback</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>All Student Feedback</h1>
+{% block title %}Feedback Review | Student Portal{% endblock %}
+{% block headline %}All Student Feedback{% endblock %}
+{% block subtitle %}Review submissions from learners across courses.{% endblock %}
+{% block header_actions %}
+<a class="button button-secondary" href="/admin_dashboard">Back to Admin</a>
+{% endblock %}
 
-<table border="1">
-
-<tr>
-    <th>Admission No</th>
-    <th>Faculty</th>
-    <th>Subject</th>
-    <th>Rating</th>
-    <th>Comments</th>
-</tr>
-
-{% for row in feedbacks %}
-<tr>
-    <td>{{ row[1] }}</td>
-    <td>{{ row[2] }}</td>
-    <td>{{ row[3] }}</td>
-    <td>{{ row[4] }}</td>
-    <td>{{ row[5] }}</td>
-</tr>
-{% endfor %}
-
-</table>
-
-<br>
-
-<a href="/admin_dashboard">Back to Dashboard</a>
-
-</body>
-</html>
+{% block content %}
+<div class="card">
+    <div class="table-shell">
+        <table>
+            <thead>
+                <tr>
+                    <th>Admission No</th>
+                    <th>Faculty</th>
+                    <th>Subject</th>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in feedbacks %}
+                <tr>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,140 +1,77 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cloud Monitoring Dashboard</title>
+{% extends 'base.html' %}
 
-    <style>
-        body{
-            font-family:Arial,sans-serif;
-            background:#f4f4f4;
-            margin:30px;
-        }
+{% block title %}Monitor | Student Portal{% endblock %}
+{% block headline %}Cloud Monitoring Dashboard{% endblock %}
+{% block subtitle %}Live system metrics and recent activity logs.{% endblock %}
+{% block header_actions %}
+<a class="button button-secondary" href="/admin_dashboard">Back to Admin</a>
+{% endblock %}
 
-        h1{
-            text-align:center;
-        }
-
-        .card{
-            background:white;
-            padding:20px;
-            margin:15px;
-            border-radius:10px;
-            box-shadow:0 2px 8px gray;
-        }
-
-        table{
-            width:100%;
-            border-collapse:collapse;
-        }
-
-        table,th,td{
-            border:1px solid gray;
-        }
-
-        th,td{
-            padding:10px;
-            text-align:center;
-        }
-
-        th{
-            background:#007bff;
-            color:white;
-        }
-
-        .btn{
-            padding:10px 20px;
-            background:#007bff;
-            color:white;
-            text-decoration:none;
-            border-radius:5px;
-        }
-    </style>
-</head>
-
-<body>
-
-<h1>☁ Cloud Monitoring Dashboard</h1>
-
-<div class="card">
-    <h3>Current Time</h3>
-    <h2 id="clock"></h2>
+{% block content %}
+<div class="stats-grid">
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Active Users</p>
+            <p class="value">{{ active_users }}</p>
+        </div>
+        <div class="stats-card-icon">👥</div>
+    </article>
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Total Students</p>
+            <p class="value">{{ total_students }}</p>
+        </div>
+        <div class="stats-card-icon">🎓</div>
+    </article>
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Total Logins</p>
+            <p class="value">{{ total_logins }}</p>
+        </div>
+        <div class="stats-card-icon">🔑</div>
+    </article>
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Feedback Entries</p>
+            <p class="value">{{ total_feedback }}</p>
+        </div>
+        <div class="stats-card-icon">💬</div>
+    </article>
 </div>
 
 <div class="card">
-    <h3>👤 Active Users</h3>
-    <h2>{{ active_users }}</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <div>
+            <p class="stats-card label">Server Status</p>
+            <p class="value">Online</p>
+        </div>
+        <div class="status-badge badge-success">🟢 Live</div>
+    </div>
+    <p class="card-subtle" style="margin-top:1rem;">Uptime since the portal started.</p>
+    <p style="margin-top:0.75rem; font-size:0.98rem;">{{ uptime }}</p>
 </div>
 
 <div class="card">
-    <h3>Total Students</h3>
-    <h2>{{ total_students }}</h2>
+    <h2>Latest Request Logs</h2>
+    <div class="table-shell" style="margin-top:1rem;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Admission No</th>
+                    <th>Action</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log[0] }}</td>
+                    <td>{{ log[1] }}</td>
+                    <td>{{ log[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<div class="card">
-    <h3>Total Logins</h3>
-    <h2>{{ total_logins }}</h2>
-</div>
-
-<div class="card">
-    <h3>Total Feedback</h3>
-    <h2>{{ total_feedback }}</h2>
-</div>
-
-<div class="card">
-    <h3>Server Status</h3>
-
-    <h2 style="color:green;">🟢 ONLINE</h2>
-
-    <p>Application Uptime</p>
-
-    <h3>{{ uptime }}</h3>
-</div>
-
-<div class="card">
-
-<h3>Latest Request Logs</h3>
-
-<table>
-
-<tr>
-<th>Admission No</th>
-<th>Action</th>
-<th>Time</th>
-</tr>
-
-{% for log in logs %}
-
-<tr>
-<td>{{ log[0] }}</td>
-<td>{{ log[1] }}</td>
-<td>{{ log[2] }}</td>
-</tr>
-
-{% endfor %}
-
-</table>
-
-</div>
-
-<br>
-
-<a href="/admin_dashboard" class="btn">⬅ Back to Admin Dashboard</a>
-
-<script>
-
-function updateClock(){
-
-    const now=new Date();
-
-    document.getElementById("clock").innerHTML=now.toLocaleTimeString();
-
-}
-
-updateClock();
-
-setInterval(updateClock,1000);
-
-</script>
-
-</body>
-</html>
+{% endblock %}

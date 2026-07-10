@@ -1,32 +1,34 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-<head>
-    <title>Attendance</title>
-</head>
-<body>
+{% block title %}Attendance | Student Portal{% endblock %}
+{% block headline %}Attendance Details{% endblock %}
+{% block subtitle %}Track attendance by subject and stay ahead.{% endblock %}
 
-<h1>Attendance Details</h1>
-
-<table border="1">
-<tr>
-<th>Subject</th>
-<th>Attendance %</th>
-</tr>
-
-{% for row in attendance %}
-
-<tr>
-<td>{{ row[0] }}</td>
-<td>{{ row[1] }}%</td>
-</tr>
-{% endfor %}
-
-</table>
-
-<br>
-
-<a href="/dashboard">Back to Dashboard</a>
-
-</body>
-</html>
+{% block content %}
+<div class="card">
+    <div class="table-search">
+        <input type="search" placeholder="Search subjects..." data-table-target="#attendanceTable" />
+    </div>
+    <div class="table-shell">
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Attendance %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in attendance %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}%</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="button-row" style="margin-top: 1.25rem;">
+        <a class="button button-secondary" href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

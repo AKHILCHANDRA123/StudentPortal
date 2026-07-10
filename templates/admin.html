@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Login</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Admin Login</h1>
+{% block title %}Admin Login | Student Portal{% endblock %}
+{% block headline %}Admin Login{% endblock %}
+{% block subtitle %}Access site administration and monitoring tools.{% endblock %}
 
-<form action="/admin_login" method="POST">
-
-    <label>Username:</label><br>
-    <input type="text" name="username"><br><br>
-
-    <label>Password:</label><br>
-    <input type="password" name="password"><br><br>
-
-    <button type="submit">Login</button>
-
-</form>
-
-</body>
-</html>
+{% block content %}
+<div class="card-grid">
+    <div class="card" style="max-width: 520px; margin: 0 auto;">
+        <form class="form-shell" action="/admin_login" method="POST">
+            <div class="field-group">
+                <input type="text" id="username" name="username" placeholder=" " required />
+                <label for="username">Username</label>
+            </div>
+            <div class="field-group">
+                <input type="password" id="password" name="password" placeholder=" " required />
+                <label for="password">Password</label>
+            </div>
+            <div class="button-row">
+                <button class="button button-primary" type="submit">Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

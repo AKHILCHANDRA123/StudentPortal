@@ -1,32 +1,34 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-<head>
-<title>Marks</title>
-</head>
-<body>
+{% block title %}Marks | Student Portal{% endblock %}
+{% block headline %}Marks Overview{% endblock %}
+{% block subtitle %}Review your grades with clean clarity.{% endblock %}
 
-<h1>Marks</h1>
-
-<table border="1">
-<tr>
-<th>Subject</th>
-<th>Marks</th>
-</tr>
-
-{% for row in marks %}
-
-<tr>
-<td>{{ row[0] }}</td>
-<td>{{ row[1] }}</td>
-</tr>
-{% endfor %}
-
-</table>
-
-<br>
-
-<a href="/dashboard">Back</a>
-
-</body>
-</html>
+{% block content %}
+<div class="card">
+    <div class="table-search">
+        <input type="search" placeholder="Search subjects..." data-table-target="#marksTable" />
+    </div>
+    <div class="table-shell">
+        <table id="marksTable">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in marks %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="button-row" style="margin-top: 1.25rem;">
+        <a class="button button-secondary" href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

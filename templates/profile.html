@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Profile</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Student Profile</h1>
+{% block title %}Profile | Student Portal{% endblock %}
+{% block headline %}Student Profile{% endblock %}
+{% block subtitle %}Your personal and academic details in one place.{% endblock %}
 
-<h3>Name: {{ student[3] }}</h3>
-
-<p>Admission No: {{ student[1] }}</p>
-<p>Email: {{ student[4] }}</p>
-<p>Phone: {{ student[5] }}</p>
-<p>Department: {{ student[6] }}</p>
-<p>Year: {{ student[7] }}</p>
-<p>Semester: {{ student[8] }}</p>
-
-<br>
-
-<a href="/dashboard">Dashboard</a>
-<a href="/logout">Logout</a>
-
-</body>
-</html>
+{% block content %}
+<div class="card-grid">
+    <div class="card">
+        <h2>Profile Overview</h2>
+        <p class="card-subtle">Verified student information.</p>
+        <div style="margin-top: 1.5rem; display: grid; gap: 1rem;">
+            <p><strong>Name:</strong> {{ student[3] }}</p>
+            <p><strong>Admission No:</strong> {{ student[1] }}</p>
+            <p><strong>Email:</strong> {{ student[4] }}</p>
+            <p><strong>Phone:</strong> {{ student[5] }}</p>
+            <p><strong>Department:</strong> {{ student[6] }}</p>
+            <p><strong>Year:</strong> {{ student[7] }}</p>
+            <p><strong>Semester:</strong> {{ student[8] }}</p>
+        </div>
+    </div>
+    <div class="card">
+        <h2>Quick Actions</h2>
+        <div class="button-row" style="margin-top: 1.25rem;">
+            <a class="button button-primary" href="/dashboard">Dashboard</a>
+            <a class="button button-secondary" href="/logout">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

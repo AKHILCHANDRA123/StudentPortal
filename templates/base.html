@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Student Portal{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body class="app-shell">
+    <header class="topbar">
+        <div class="brand-group">
+            <div class="brand-mark">SP</div>
+            <div>
+                <p class="brand-name">Student Portal</p>
+                <p class="brand-subtitle">Modern academic dashboard</p>
+            </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+            {% if request.path.startswith('/admin') or request.path in ['/admin', '/view_feedback', '/monitor'] %}
+                <a href="/admin" class="nav-link{% if request.path == '/admin' %} active{% endif %}">Admin Login</a>
+                <a href="/admin_dashboard" class="nav-link{% if request.path == '/admin_dashboard' %} active{% endif %}">Dashboard</a>
+                <a href="/view_feedback" class="nav-link{% if request.path == '/view_feedback' %} active{% endif %}">Feedback</a>
+                <a href="/monitor" class="nav-link{% if request.path == '/monitor' %} active{% endif %}">Monitor</a>
+            {% else %}
+                <a href="/dashboard" class="nav-link{% if request.path == '/dashboard' %} active{% endif %}">Dashboard</a>
+                <a href="/profile" class="nav-link{% if request.path == '/profile' %} active{% endif %}">Profile</a>
+                <a href="/attendance" class="nav-link{% if request.path == '/attendance' %} active{% endif %}">Attendance</a>
+                <a href="/timetable" class="nav-link{% if request.path == '/timetable' %} active{% endif %}">Timetable</a>
+                <a href="/marks" class="nav-link{% if request.path == '/marks' %} active{% endif %}">Marks</a>
+                <a href="/results" class="nav-link{% if request.path == '/results' %} active{% endif %}">Results</a>
+                <a href="/fees" class="nav-link{% if request.path == '/fees' %} active{% endif %}">Fees</a>
+                <a href="/feedback" class="nav-link{% if request.path == '/feedback' %} active{% endif %}">Feedback</a>
+            {% endif %}
+        </nav>
+
+        <div class="topbar-actions">
+            {% if session.get('name') %}
+                <div class="user-pill">Hi, {{ session.get('name') }}</div>
+                <a class="button button-ghost" href="/logout">Sign Out</a>
+            {% elif session.get('admin') %}
+                <a class="button button-ghost" href="/admin_logout">Sign Out</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="page-shell">
+        <section class="page-header">
+            <div>
+                <p class="eyebrow">{% block subtitle %}Academic resources and performance overview{% endblock %}</p>
+                <h1>{% block headline %}{% endblock %}</h1>
+            </div>
+            <div class="header-actions">{% block header_actions %}{% endblock %}</div>
+        </section>
+
+        <main class="page-content">{% block content %}{% endblock %}</main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

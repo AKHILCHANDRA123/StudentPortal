@@ -1,18 +1,21 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-<head>
-<title>Results</title>
-</head>
-<body>
+{% block title %}Results | Student Portal{% endblock %}
+{% block headline %}Semester Result{% endblock %}
+{% block subtitle %}See your current CGPA and academic outcome.{% endblock %}
 
-<h1>Semester Result</h1>
-
-<h2>CGPA : {{ result[0] }}</h2>
-
-<br>
-
-<a href="/dashboard">Back</a>
-
-</body>
-</html>
+{% block content %}
+<div class="card">
+    <p class="card-subtle">Latest published result.</p>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
+        <div>
+            <p class="stats-card label">CGPA</p>
+            <p class="value">{{ result[0] }}</p>
+        </div>
+        <div class="status-badge badge-success">Good standing</div>
+    </div>
+    <div class="button-row" style="margin-top: 1.5rem;">
+        <a class="button button-secondary" href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

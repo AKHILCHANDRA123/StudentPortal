@@ -1,23 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Login Portal</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Student Login Portal</h1>
+{% block title %}Student Login | Portal{% endblock %}
+{% block headline %}Student Login{% endblock %}
+{% block subtitle %}Secure access to your campus dashboard{% endblock %}
 
-<form action="/login" method="POST">
+{% block content %}
+<div class="card-grid">
+    <div class="card" style="max-width: 520px; margin: 0 auto;">
+        <p class="card-subtle">Enter your credentials to continue.</p>
 
-    <label>Admission Number:</label><br>
-    <input type="text" name="admission_no"><br><br>
+        {% if error %}
+        <div class="card" style="background: #fef2f2; border-color: rgba(239, 68, 68, 0.15); color: #b91c1c;">
+            {{ error }}
+        </div>
+        {% endif %}
 
-    <label>Password:</label><br>
-    <input type="password" name="password"><br><br>
-
-    <button type="submit">Login</button>
-
-</form>
-
-</body>
-</html>
+        <form class="form-shell" action="/login" method="POST">
+            <div class="field-group">
+                <input type="text" id="admission_no" name="admission_no" placeholder=" " required />
+                <label for="admission_no">Admission Number</label>
+            </div>
+            <div class="field-group">
+                <input type="password" id="password" name="password" placeholder=" " required />
+                <label for="password">Password</label>
+            </div>
+            <div class="button-row">
+                <button class="button button-primary" type="submit">Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

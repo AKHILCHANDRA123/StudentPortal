@@ -1,48 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Timetable</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Student Timetable</h1>
+{% block title %}Timetable | Student Portal{% endblock %}
+{% block headline %}Student Timetable{% endblock %}
+{% block subtitle %}Your weekly schedule in a clean layout.{% endblock %}
 
-<table border="1">
-<tr>
-    <th>Day</th>
-    <th>Subject</th>
-</tr>
-
-<tr>
-    <td>Monday</td>
-    <td>Python</td>
-</tr>
-
-<tr>
-    <td>Tuesday</td>
-    <td>DBMS</td>
-</tr>
-
-<tr>
-    <td>Wednesday</td>
-    <td>Cloud Computing</td>
-</tr>
-
-<tr>
-    <td>Thursday</td>
-    <td>Mathematics</td>
-</tr>
-
-<tr>
-    <td>Friday</td>
-    <td>Data Structures</td>
-</tr>
-
-</table>
-
-<br>
-
-<a href="/dashboard">Dashboard</a>
-
-</body>
-</html>
+{% block content %}
+<div class="card">
+    <div class="table-shell">
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>Python</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>DBMS</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Cloud Computing</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Data Structures</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="button-row" style="margin-top: 1.5rem;">
+        <a class="button button-secondary" href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

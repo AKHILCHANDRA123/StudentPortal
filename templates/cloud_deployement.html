@@ -1,165 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cloud Deployment Dashboard</title>
+{% extends 'base.html' %}
 
-    <style>
-        body{
-            font-family:Arial,sans-serif;
-            background:#f4f4f4;
-            margin:30px;
-        }
+{% block title %}Cloud Deployment | Student Portal{% endblock %}
+{% block headline %}Cloud Deployment Dashboard{% endblock %}
+{% block subtitle %}Overview of platform infrastructure and deployment status.{% endblock %}
+{% block header_actions %}
+<a class="button button-secondary" href="/dashboard">Back to Dashboard</a>
+{% endblock %}
 
-        .container{
-            width:80%;
-            margin:auto;
-        }
+{% block content %}
+<div class="card-grid">
+    <div class="card">
+        <h2>Application Status</h2>
+        <div style="display:grid; gap:0.75rem; margin-top:1rem;">
+            <div style="display:grid; grid-template-columns: 140px 1fr; gap:0.75rem;">
+                <strong>Application</strong><span>Student Portal</span>
+                <strong>Cloud Platform</strong><span>Render</span>
+                <strong>Database</strong><span>SQLite</span>
+                <strong>Backend</strong><span>Flask (Python)</span>
+                <strong>Status</strong><span class="status-badge badge-success">🟢 Running</span>
+                <strong>Deployment</strong><span>Cloud Hosted</span>
+                <strong>HTTPS</strong><span>Enabled</span>
+            </div>
+        </div>
+    </div>
 
-        .card{
-            background:white;
-            margin:20px 0;
-            padding:20px;
-            border-radius:10px;
-            box-shadow:0 2px 10px rgba(0,0,0,0.2);
-        }
+    <div class="card">
+        <h2>Technology Stack</h2>
+        <ul style="margin:1rem 0 0 0; padding-inline-start: 1.2rem; color: var(--muted);">
+            <li>Python</li>
+            <li>Flask</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>SQLite Database</li>
+            <li>GitHub</li>
+            <li>Render Cloud</li>
+        </ul>
+    </div>
 
-        h1{
-            text-align:center;
-            color:#0d6efd;
-        }
+    <div class="card">
+        <h2>Deployment Workflow</h2>
+        <ol style="margin:1rem 0 0 1.2rem; color: var(--muted);">
+            <li>Developed in VS Code</li>
+            <li>Stored source code in GitHub</li>
+            <li>Connected GitHub repository to Render</li>
+            <li>Render deploys the application automatically</li>
+            <li>Users access the portal through a public URL</li>
+        </ol>
+    </div>
 
-        table{
-            width:100%;
-            border-collapse:collapse;
-        }
-
-        th,td{
-            border:1px solid #ccc;
-            padding:10px;
-            text-align:left;
-        }
-
-        th{
-            background:#0d6efd;
-            color:white;
-        }
-
-        .online{
-            color:green;
-            font-weight:bold;
-        }
-
-        .btn{
-            display:inline-block;
-            padding:10px 20px;
-            background:#0d6efd;
-            color:white;
-            text-decoration:none;
-            border-radius:5px;
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h1>☁ Cloud Deployment Dashboard</h1>
-
-<div class="card">
-<h3>Application Status</h3>
-
-<table>
-<tr>
-<th>Application</th>
-<td>Student Portal</td>
-</tr>
-
-<tr>
-<th>Cloud Platform</th>
-<td>Render</td>
-</tr>
-
-<tr>
-<th>Database</th>
-<td>SQLite</td>
-</tr>
-
-<tr>
-<th>Backend</th>
-<td>Flask (Python)</td>
-</tr>
-
-<tr>
-<th>Status</th>
-<td class="online">🟢 Running</td>
-</tr>
-
-<tr>
-<th>Deployment Mode</th>
-<td>Cloud Hosted</td>
-</tr>
-
-<tr>
-<th>HTTPS</th>
-<td>Enabled</td>
-</tr>
-
-</table>
-
+    <div class="card">
+        <h2>Cloud Features</h2>
+        <ul style="margin:1rem 0 0 1.2rem; color: var(--muted);">
+            <li>Student Login</li>
+            <li>Admin Login</li>
+            <li>Attendance</li>
+            <li>Marks</li>
+            <li>Results</li>
+            <li>Fees</li>
+            <li>Feedback</li>
+            <li>Monitoring Dashboard</li>
+            <li>Request Logs</li>
+        </ul>
+    </div>
 </div>
-
-<div class="card">
-
-<h3>Technology Stack</h3>
-
-<ul>
-<li>Python</li>
-<li>Flask</li>
-<li>HTML</li>
-<li>CSS</li>
-<li>SQLite Database</li>
-<li>GitHub</li>
-<li>Render Cloud</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>Deployment Workflow</h3>
-
-<ol>
-<li>Developed in VS Code</li>
-<li>Stored Source Code in GitHub</li>
-<li>Connected GitHub Repository to Render</li>
-<li>Render automatically deployed the application</li>
-<li>Users access the application through a public URL</li>
-</ol>
-
-</div>
-
-<div class="card">
-
-<h3>Cloud Features</h3>
-
-<ul>
-<li>✅ Student Login</li>
-<li>✅ Admin Login</li>
-<li>✅ Attendance</li>
-<li>✅ Marks</li>
-<li>✅ Results</li>
-<li>✅ Fees</li>
-<li>✅ Feedback</li>
-<li>✅ Monitoring Dashboard</li>
-<li>✅ Request Logs</li>
-</ul>
-
-</div>
-
-<a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
-
-</div>
-
-</body>
-</html>
+{% endblock %}

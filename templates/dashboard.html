@@ -1,56 +1,52 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
-<head>
-    <title>Student Dashboard</title>
-</head>
-<body>
+{% block title %}Dashboard | Student Portal{% endblock %}
+{% block headline %}Welcome, {{ student[3] }}{% endblock %}
+{% block subtitle %}Your academic snapshot is ready.{% endblock %}
+{% block header_actions %}
+<a class="button button-secondary" href="/profile">View Profile</a>
+<a class="button button-primary" href="/logout">Logout</a>
+{% endblock %}
 
-<h1>🎓 Student Dashboard</h1>
+{% block content %}
+<div class="stats-grid">
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Admission No</p>
+            <p class="value">{{ student[1] }}</p>
+        </div>
+        <div class="stats-card-icon">🎓</div>
+    </article>
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Department</p>
+            <p class="value">{{ student[6] }}</p>
+        </div>
+        <div class="stats-card-icon">📚</div>
+    </article>
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Year / Semester</p>
+            <p class="value">{{ student[7] }} · {{ student[8] }}</p>
+        </div>
+        <div class="stats-card-icon">⏱️</div>
+    </article>
+    <article class="card stats-card">
+        <div>
+            <p class="stats-card label">Contact</p>
+            <p class="value">{{ student[5] }}</p>
+        </div>
+        <div class="stats-card-icon">📞</div>
+    </article>
+</div>
 
-<h2>Welcome {{ student[3] }}</h2>
-
-<hr>
-
-<h2>Student Details</h2>
-
-<p><b>Admission Number:</b> {{ student[1] }}</p>
-<p><b>Name:</b> {{ student[3] }}</p>
-<p><b>Email:</b> {{ student[4] }}</p>
-<p><b>Phone:</b> {{ student[5] }}</p>
-<p><b>Department:</b> {{ student[6] }}</p>
-<p><b>Year:</b> {{ student[7] }}</p>
-<p><b>Semester:</b> {{ student[8] }}</p>
-
-<hr>
-
-<h2>Academic Services</h2>
-
-<p><a href="/attendance">📅 Attendance</a></p>
-
-<p><a href="/timetable">🕒 Timetable</a></p>
-
-<p><a href="/marks">📝 Marks</a></p>
-
-<p><a href="/results">🏆 Results</a></p>
-
-<p><a href="/fees">💰 Fees</a></p>
-
-<p><a href="/feedback">⭐ Feedback</a></p>
-<p><a href="/cloud">☁ Cloud Deployement Dashboard</a></p>
-
-<hr>
-
-
-<h2>Portal Status</h2>
-
-<p>✅ Login Status: Active</p>
-<p>✅ Cloud Deployment: Online</p>
-<p>✅ Student Portal: Running</p>
-
-<hr>
-
-<p><a href="/logout">🚪 Logout</a></p>
-
-</body>
-</html>
+<div class="service-grid">
+    <article class="service-card"><a href="/attendance"><h3>Attendance</h3><p>Review attendance by subject and stay on track.</p></a></article>
+    <article class="service-card"><a href="/timetable"><h3>Timetable</h3><p>View your weekly schedule with clear planning.</p></a></article>
+    <article class="service-card"><a href="/marks"><h3>Marks</h3><p>Monitor current term scores and progress.</p></a></article>
+    <article class="service-card"><a href="/results"><h3>Results</h3><p>Check your semester CGPA and academic standing.</p></a></article>
+    <article class="service-card"><a href="/fees"><h3>Fees</h3><p>See your fee balance and payment status.</p></a></article>
+    <article class="service-card"><a href="/feedback"><h3>Feedback</h3><p>Share feedback to improve your course experience.</p></a></article>
+    <article class="service-card"><a href="/cloud"><h3>Cloud Deployment</h3><p>Open the cloud monitoring experience for admins.</p></a></article>
+</div>
+{% endblock %}
